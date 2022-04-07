@@ -45,4 +45,24 @@ export class UsersService {
       },
     ];
   }
+
+  getUsersAlphabetically(): user[] {
+
+      let sortedUsers = this.getUsers().sort((a, b) => {
+        const result = a.firstName.localeCompare(b.firstName);
+
+        // If same firstname order by lastname;
+        return result !== 0 ?
+            result : 
+            a.lastName.localeCompare(b.lastName);
+      })
+
+      return sortedUsers;
+  }
+
+  getUserById(id): user {
+      return this.getUsers().find(user => user.id == id);
+  }
+
+  
 }
