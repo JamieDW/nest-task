@@ -4,12 +4,7 @@ import { NotFoundException} from '@nestjs/common'
 
 @Controller('users')
 export class UsersController {
-    constructor(private readonly usersService: UsersService) {}   
-
-    @Get()
-    getUsers(): user[] {
-        return this.usersService.getUsersAlphabetically();
-    }
+    constructor(private readonly usersService: UsersService) {}
 
     @Get(':id')
     getUserById(@Param('id') id): user {
@@ -22,5 +17,12 @@ export class UsersController {
 
         return user;
     }
+
+    @Get()
+    getUsers(): user[] {
+        return this.usersService.getUsersAlphabetically();
+    }
     
+    // Possible other CRUD resources such as creating, updating, and delting users.
+    // Would be useful to add a resource to search users by firstname or lastname
 }
