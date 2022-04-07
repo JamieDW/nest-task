@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 export class UsersService {
-  getUsers(): any {
+  getUsers(): user[] {
     return [
       {
         id: 1,
